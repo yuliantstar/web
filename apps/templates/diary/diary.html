@@ -1,0 +1,23 @@
+{% load static %}
+{% load f_index %}
+
+{% block diary %}
+	{% if sub_page == 'none' %}
+		<h2>My Diary</h2>
+		<ul>
+			{% for link in pages %}
+				<li>			
+					{{ date|index:forloop.counter0 }}
+					<a href="{{site}}diary/{{ link }}">	
+						<h4>{{ title|index:forloop.counter0 }}</h4>									
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+		
+		{% else %}
+			{% block sub_page %}
+				{% include sub_page %}
+			{% endblock %}
+	{% endif %}
+{% endblock %}
